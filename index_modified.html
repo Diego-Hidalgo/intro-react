@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTRO REACT MODIFIED</title>
+    <!-- Load React. -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/remarkable/1.7.1/remarkable.min.js"></script>
+</head>
+<body>
+
+    <div id="simple_component"></div> <br>
+    <div id="stateful_component"></div> <br>
+    <div id="application"></div> <br>
+    <div id="external_component"></div> <br>
+
+    <!-- Load our React component. -->
+    <script type="text/babel">
+      
+      //A Simple Component
+      class HelloMessage extends React.Component {
+
+        render() {
+          return (
+            <div>
+              Hola {this.props.name}
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <HelloMessage name='DIEGO' />,
+        document.getElementById('simple_component')
+      );
+      //=========================================================
+
+      
+
+    </script>
+
+</body>
+</html>
