@@ -39,7 +39,58 @@
       );
       //=========================================================
 
-      
+      //A Stateful Component
+      class Timer extends React.Component {
+
+        constructor(props) {
+          super(props);
+          this.state = {hours : 0, minutes : 0, seconds : 0, altHours : 0, altMinutes : 0, altSeconds: 0};
+        }
+
+        tick() {
+          if(this.state.seconds == 59) {
+            if(this.state.minutes == 59)
+              this.setState(state => ({ hours : state.hours + 1, minutes : -1 }));
+            this.setState(state => ({ minutes : state.minutes + 1, seconds : 0 }));
+          } 
+          else
+            this.setState(state => ({ seconds : state.seconds + 1 }));
+        }
+
+        alterTick() {
+          if(this.state.altSeconds == 9) {
+            if(this.state.altMinutes == 9)
+              this.setState(state => ({ altHours : state.altHours + 1, altMinutes : -1 }));
+            this.setState(state => ({ altMinutes : state.altMinutes + 1, altSeconds : 0 }));
+          }
+          else
+            this.setState(state => ({ altSeconds : state.altSeconds + 1}));
+        }
+
+        componentDidMount() {
+          this.interval = setInterval(() => this.tick(), 1000);
+          this.interval = setInterval(() => this.alterTick(), 1000);
+        }
+
+        componentWillUnmount() {
+          clearInterval(this.interval);
+        }
+
+        render() {
+          return (
+            <div>
+              Time : {this.state.hours} : {this.state.minutes} : {this.state.seconds} <br />
+              Alternative Time : {this.state.altHours} : {this.state.altMinutes} : {this.state.altSeconds}
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <Timer />,
+        document.getElementById('stateful_component')
+      );
+      //=========================================================
 
     </script>
 
